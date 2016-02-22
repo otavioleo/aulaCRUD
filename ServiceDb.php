@@ -12,6 +12,13 @@ class ServiceDb
         $this->entity = $entity;
     }
 
+    public function listardb()
+    {
+        $query = "SHOW TABLES FROM pdo";
+        $stmt = $this->db->query($query);
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
+ 
     public function find($id)
     {
         $query = "Select * from {$this->entity->getTable()} where id=:id";

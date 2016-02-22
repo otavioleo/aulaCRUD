@@ -2,12 +2,22 @@
 require_once 'conecta.php';
 require_once 'EntidadeInterface.php';
 require_once 'Alunos.php';
+//require_once 'Tabelas.php';
 require_once 'ServiceDb.php';
 
-
+// gerarTabelas($conexao);
+// $alunos = new Tabelas();
 $alunos = new Alunos();
-
 $serviceDb = new ServiceDb($conexao, $alunos);
+
+//$query = "SHOW TABLES FROM pdo";
+//$rs = $conexao->query("$query");
+//$All = $rs->fetchAll();
+//foreach ($All as $item) {
+//   echo ($item [0]) . "\n";
+//   $alunos = new Tabelas();
+//   $serviceDb = new ServiceDb($conexao, $alunos);
+//}
 ?>
 <!DOCTYPE html>
 <html>
@@ -45,22 +55,22 @@ $serviceDb = new ServiceDb($conexao, $alunos);
             <th>Editar</th>
             <th>Excluir</th>
 
-            <?php
-            foreach ($serviceDb->listar("nome Asc") as $c) {
-               $cid = $c['id'];
-               print "<tr><td nowrap>";
-               echo $c['nome'];
-               print "</td><td nowrap>";
-               echo $c['email'];
-               print "</td><td>";
-               echo $c['nota'];
-               print "</td><td>";
-               print "<a href='alterar.php?id=$cid'>Alterar</a>";
-               print '</td><td>';
-               print "<a href='excluir.php?id=$cid'>Excluir</a>";
-               print "</td></tr>";
-            }
-            ?>
+<?php
+foreach ($serviceDb->listar("nome Asc") as $c) {
+   $cid = $c['id'];
+   print "<tr><td nowrap>";
+   echo $c['nome'];
+   print "</td><td nowrap>";
+   echo $c['email'];
+   print "</td><td>";
+   echo $c['nota'];
+   print "</td><td>";
+   print "<a href='alterar.php?id=$cid'>Alterar</a>";
+   print '</td><td>';
+   print "<a href='excluir.php?id=$cid'>Excluir</a>";
+   print "</td></tr>";
+}
+?>
         </table>
         <div id="toolbar">
             <br>

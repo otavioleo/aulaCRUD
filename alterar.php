@@ -1,13 +1,8 @@
 <?php
+require_once 'conecta.php';
 require_once 'EntidadeInterface.php';
 require_once 'Alunos.php';
 require_once 'ServiceDb.php';
-
-try {
-   $conexao = new \PDO("mysql:host=localhost;dbname=pdo", "bd_pdo", "pdobdpdo");
-} catch (\PDOException $e) {
-   die("Não foi possível estabelecer a conexão com o banco de dados: Erro código: " . $e->getCode() . ": " . $e->getMessage());
-}
 
 $id = $_REQUEST['id'];
 if (isset($_POST['submitted'])) {
